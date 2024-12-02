@@ -1,26 +1,29 @@
-//declare "mongoose"
+// Import the mongoose library
 const mongoose = require('mongoose')
 
-//declare schema (table design/structure)
-//we declare column (field) name + type along with input validation
+// Define a schema for the "vocabs" collection
+// The schema specifies the structure of documents in the collection, including field names, types, and validation rules
 const vocabSchema = new mongoose.Schema(
    {
+      // Define the "english" field: must be a string and is required
       english: {
          type: String,
          required: true
       },
+      // Define the "german" field: must be a string and is required
       german: {
          type: String,
          required: true
       }
    },
    {
-      versionKey: false   //ignore "__v" when add new data
+      versionKey: false   // Disable the "__v" field (MongoDB's versioning key for documents)
    }
 )
 
-//declare model
-const vocabModel = mongoose.model('vocabs', vocabSchema)  //vocabs: table (collection) name
+// Create a model from the schema
+// The model represents the "vocabs" collection in the database
+const vocabModel = mongoose.model('vocabs', vocabSchema)
 
-//export model as a module
+// Export the model to make it available for use in other files
 module.exports = vocabModel

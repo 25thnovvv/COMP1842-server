@@ -1,22 +1,26 @@
-//declare controller
-//Note : .. (2 dots symbol) => go up (outside)
+// Import the vocabulary controller functions
 const vocabController = require('../controllers/vocabController')
 
-//declare router
+// Define the router function
 const vocabRouter = (app) => {
-   //group links (urls) together
-   //group 1: no need to include "id"
+   // Group API routes that do not require an "id" parameter
    app.route('/vocabs')
+      // Handle GET request to retrieve all vocabulary records
       .get(vocabController.viewAllVocabs)
+      // Handle POST request to add a new vocabulary record
       .post(vocabController.addVocab)
+      // Handle DELETE request to delete all vocabulary records
       .delete(vocabController.deleteAllVocabs)
 
-   //group 2: need to include "id"
+   // Group API routes that require an "id" parameter
    app.route('/vocabs/:id')
+      // Handle GET request to retrieve a specific vocabulary by ID
       .get(vocabController.viewVocab)
+      // Handle PUT request to edit a vocabulary by ID
       .put(vocabController.editVocab)
+      // Handle DELETE request to delete a specific vocabulary by ID
       .delete(vocabController.deleteVocab)
 }
 
-//export router
+// Export the router function to make it available for use in other files
 module.exports = vocabRouter

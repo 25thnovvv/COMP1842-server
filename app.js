@@ -10,11 +10,6 @@ const app = express()
 //set port for cloud
 const port = process.env.PORT || 3001
 
-//set content for homepage (test only)
-// app.get('/', (req, res) => {
-//    res.send("COMP1842 - MEVN stack web app")
-// })
-
 //declare "mongoose" library: to connect to MongoDB
 const mongoose = require('mongoose')
 //declare database connection string (URI) + database name
